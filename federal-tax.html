@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Federal Income Tax Calculator 2025 – Free & Accurate | Quinet Calculator</title>
+<meta name="description" content="Calculate your US federal income tax for 2025. Enter your income and filing status to see your tax bracket, effective rate, and take-home pay. Free and accurate.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.quinetcalc.com/usa/federal-tax.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<meta property="og:title" content="US Federal Income Tax Calculator 2025 | Quinet Calculator">
+<meta property="og:description" content="Free US federal income tax calculator for 2025. Find your tax bracket, effective rate, and estimated take-home pay.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.quinetcalc.com/usa/federal-tax.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "US Federal Income Tax Calculator 2025",
+  "url": "https://www.quinetcalc.com/usa/federal-tax.html",
+  "description": "Free US federal income tax calculator for 2025. Calculate your tax bracket, effective tax rate, and estimated take-home pay based on your filing status.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the US federal income tax brackets for 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For 2025, single filers pay 10% on income up to $11,925; 12% up to $48,475; 22% up to $103,350; 24% up to $197,300; 32% up to $250,525; 35% up to $626,350; and 37% above $626,350. Married filing jointly brackets are roughly double."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the standard deduction for 2025?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For 2025, the standard deduction is $15,000 for single filers, $30,000 for married filing jointly, and $22,500 for head of household."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between marginal and effective tax rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your marginal tax rate is the rate applied to your last dollar of income — your highest tax bracket. Your effective tax rate is the average rate you pay across all your income, always lower than your marginal rate because the US uses a progressive tax system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this calculator include Social Security and Medicare taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This calculator includes FICA taxes: Social Security (6.2% on income up to $176,100) and Medicare (1.45% on all income, plus an additional 0.9% on income above $200,000 for single filers)."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- HEADER / NAVIGATION (from nav.js) -->
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <div class="container">
+
+    <!-- TOP AD -->
+    <div class="ad-slot ad-slot-banner-top" aria-label="Advertisement">Ad · 728×90</div>
+
+    <div class="calc-page-wrap">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <a href="/usa/index.html">🇺🇸 USA</a>
+        <span>›</span>
+        <span>Federal Income Tax Calculator</span>
+      </nav>
+
+      <!-- PAGE HERO -->
+      <header class="page-hero">
+        <span class="label-tag" style="color:var(--color-usa)">🇺🇸 United States · Finance</span>
+        <h1>US Federal Income Tax Calculator 2025</h1>
+        <p>Enter your annual income and filing status to calculate your federal income tax, FICA contributions, and estimated take-home pay for 2025.</p>
+      </header>
+
+      <!-- CALCULATOR -->
+      <div class="calc-box" role="form" aria-label="US Federal Income Tax Calculator">
+
+        <div class="form-group">
+          <label for="usa-income">Annual Gross Income ($)</label>
+          <div class="hint">Your total income before any deductions or taxes</div>
+          <input type="number" id="usa-income" placeholder="e.g. 75000" min="0" step="100">
+        </div>
+
+        <div class="form-group">
+          <label for="usa-filing">Filing Status</label>
+          <select id="usa-filing">
+            <option value="single">Single</option>
+            <option value="married_joint">Married Filing Jointly</option>
+            <option value="married_separate">Married Filing Separately</option>
+            <option value="hoh">Head of Household</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="usa-deduction">Deduction Type</label>
+          <select id="usa-deduction" onchange="toggleItemized()">
+            <option value="standard">Standard Deduction (recommended)</option>
+            <option value="itemized">Itemized Deduction</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="itemized-group" style="display:none">
+          <label for="usa-itemized">Your Itemized Deductions ($)</label>
+          <div class="hint">Total of mortgage interest, charitable donations, state taxes, etc.</div>
+          <input type="number" id="usa-itemized" placeholder="e.g. 18000" min="0" step="100">
+        </div>
+
+        <div class="form-group">
+          <label for="usa-401k">401(k) / Pre-tax Retirement Contribution ($)</label>
+          <div class="hint">Optional — reduces your federal taxable income (max $23,500 for 2025)</div>
+          <input type="number" id="usa-401k" placeholder="e.g. 5000" min="0" step="100" value="0">
+        </div>
+
+        <button class="calc-btn" style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); border: none; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); transition: all 0.3s ease;" onclick="calcUSATax()">
+          Calculate Tax
+        </button>
+      </div>
+
+      <!-- RESULT BOX -->
+      <section class="result-box" id="usa-result" aria-live="polite" aria-label="Tax results">
+        <div class="result-hero" style="background:var(--color-usa)">
+          <div class="r-label">Estimated Take-Home Pay</div>
+          <div class="r-value" id="usa-takehome">$--</div>
+          <div class="r-sub" id="usa-monthly">-- per month</div>
+        </div>
+        <div class="result-rows">
+          <div class="result-row">
+            <span class="rr-label">Gross income</span>
+            <span class="rr-value" id="usa-gross-show">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Standard / Itemized deduction</span>
+            <span class="rr-value" id="usa-deduct-show">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">401(k) contribution</span>
+            <span class="rr-value" id="usa-401k-show">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Federal taxable income</span>
+            <span class="rr-value" id="usa-taxable">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Federal income tax</span>
+            <span class="rr-value" id="usa-fed-tax">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Social Security (6.2%)</span>
+            <span class="rr-value" id="usa-ss">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Medicare (1.45% / 2.35%)</span>
+            <span class="rr-value" id="usa-medicare">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Marginal tax rate</span>
+            <span class="rr-value" id="usa-marginal">--</span>
+          </div>
+          <div class="result-row">
+            <span class="rr-label">Effective tax rate</span>
+            <span class="rr-value" id="usa-effective">--</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MID AD -->
+      <div class="ad-slot ad-slot-rect" id="usa-mid-ad" style="display:none" aria-label="Advertisement">
+        Ad · 336×280
+      </div>
+
+      <!-- TAX BANDS TABLE -->
+      <section style="margin-top:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden" aria-label="2025 Federal Tax Brackets">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border)">
+          <h2 style="font-size:16px;font-family:var(--font-body);font-weight:600">2025 Federal Tax Brackets</h2>
+        </div>
+        <!-- Tab toggle -->
+        <div style="display:flex;gap:0;border-bottom:1px solid var(--border)">
+          <button id="tab-single" onclick="showBracketTab('single')" style="flex:1;padding:10px;border:none;background:var(--color-usa);color:#fff;font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer">Single</button>
+          <button id="tab-married" onclick="showBracketTab('married')" style="flex:1;padding:10px;border:none;background:var(--bg);color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;border-left:1px solid var(--border)">Married / Joint</button>
+          <button id="tab-hoh" onclick="showBracketTab('hoh')" style="flex:1;padding:10px;border:none;background:var(--bg);color:var(--muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;border-left:1px solid var(--border)">Head of Household</button>
+        </div>
+
+        <!-- Single -->
+        <div id="brackets-single">
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:var(--bg)">
+              <th style="padding:10px 20px;text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)">Rate</th>
+              <th style="padding:10px 20px;text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)">Taxable Income (Single)</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:var(--color-health)">10%</td><td style="padding:10px 20px">$0 – $11,925</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#4A9B6F">12%</td><td style="padding:10px 20px">$11,926 – $48,475</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#F5A623">22%</td><td style="padding:10px 20px">$48,476 – $103,350</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#E07820">24%</td><td style="padding:10px 20px">$103,351 – $197,300</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#C84B2F">32%</td><td style="padding:10px 20px">$197,301 – $250,525</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#A83020">35%</td><td style="padding:10px 20px">$250,526 – $626,350</td></tr>
+              <tr><td style="padding:10px 20px;font-weight:600;color:#8B0000">37%</td><td style="padding:10px 20px">Over $626,350</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Married -->
+        <div id="brackets-married" style="display:none">
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:var(--bg)">
+              <th style="padding:10px 20px;text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)">Rate</th>
+              <th style="padding:10px 20px;text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)">Taxable Income (Married/Joint)</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:var(--color-health)">10%</td><td style="padding:10px 20px">$0 – $23,850</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#4A9B6F">12%</td><td style="padding:10px 20px">$23,851 – $96,950</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#F5A623">22%</td><td style="padding:10px 20px">$96,951 – $206,700</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#E07820">24%</td><td style="padding:10px 20px">$206,701 – $394,600</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#C84B2F">32%</td><td style="padding:10px 20px">$394,601 – $501,050</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#A83020">35%</td><td style="padding:10px 20px">$501,051 – $751,600</td></tr>
+              <tr><td style="padding:10px 20px;font-weight:600;color:#8B0000">37%</td><td style="padding:10px 20px">Over $751,600</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Head of Household -->
+        <div id="brackets-hoh" style="display:none">
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:var(--bg)">
+              <th style="padding:10px 20px;text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)">Rate</th>
+              <th style="padding:10px 20px;text-align:left;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)">Taxable Income (Head of Household)</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:var(--color-health)">10%</td><td style="padding:10px 20px">$0 – $17,000</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#4A9B6F">12%</td><td style="padding:10px 20px">$17,001 – $64,850</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#F5A623">22%</td><td style="padding:10px 20px">$64,851 – $103,350</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#E07820">24%</td><td style="padding:10px 20px">$103,351 – $197,300</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#C84B2F">32%</td><td style="padding:10px 20px">$197,301 – $250,500</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 20px;font-weight:600;color:#A83020">35%</td><td style="padding:10px 20px">$250,501 – $626,350</td></tr>
+              <tr><td style="padding:10px 20px;font-weight:600;color:#8B0000">37%</td><td style="padding:10px 20px">Over $626,350</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SEO CONTENT SECTION -->
+      <section style="margin-top:28px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px" aria-label="About US Federal Income Tax">
+        <h2 style="font-size:20px;margin-bottom:14px">How US Federal Income Tax Works in 2025</h2>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:14px">
+          The United States uses a <strong>progressive federal income tax system</strong>, meaning different portions of your income are taxed at different rates. You only pay the higher rate on the income that falls within that bracket — not on your entire income.
+        </p>
+        <h3 style="font-size:16px;font-family:var(--font-body);font-weight:600;margin-bottom:8px;margin-top:18px">Standard Deduction for 2025</h3>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:14px">
+          Before calculating your tax, you subtract either the <strong>standard deduction</strong> or your itemized deductions from your gross income. For 2025, the standard deduction is <strong>$15,000 for single filers</strong>, <strong>$30,000 for married filing jointly</strong>, and <strong>$22,500 for head of household</strong>. Most taxpayers use the standard deduction as it is larger than their itemized expenses.
+        </p>
+        <h3 style="font-size:16px;font-family:var(--font-body);font-weight:600;margin-bottom:8px;margin-top:18px">FICA Taxes — Social Security & Medicare</h3>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:14px">
+          In addition to federal income tax, most employees pay <strong>FICA taxes</strong>. Social Security is <strong>6.2%</strong> on wages up to <strong>$176,100</strong> (the 2025 wage base). Medicare is <strong>1.45%</strong> on all wages, plus an additional <strong>0.9%</strong> on wages above $200,000 for single filers ($250,000 for married filing jointly).
+        </p>
+        <h3 style="font-size:16px;font-family:var(--font-body);font-weight:600;margin-bottom:8px;margin-top:18px">401(k) and Pre-Tax Contributions</h3>
+        <p style="color:var(--muted);font-size:14px;line-height:1.8">
+          Contributing to a traditional <strong>401(k)</strong> reduces your federal taxable income. For 2025, the employee contribution limit is <strong>$23,500</strong> ($31,000 if age 50 or older). This can significantly lower your tax bill — someone in the 22% bracket who contributes $10,000 saves $2,200 in federal taxes.
+        </p>
+      </section>
+
+      <!-- MID AD 2 -->
+      <div class="ad-slot ad-slot-rect" style="margin-top:24px" aria-label="Advertisement">Ad · 336×280</div>
+
+      <!-- FAQ -->
+      <section class="faq-section" aria-label="Frequently Asked Questions about US Federal Income Tax">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What are the US federal income tax brackets for 2025? <span class="faq-arrow">+</span></button>
+          <div class="faq-a"><p>For 2025, single filers are taxed at <strong>10%</strong> up to $11,925; <strong>12%</strong> up to $48,475; <strong>22%</strong> up to $103,350; <strong>24%</strong> up to $197,300; <strong>32%</strong> up to $250,525; <strong>35%</strong> up to $626,350; and <strong>37%</strong> above $626,350. Married filing jointly brackets are roughly double.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What is the standard deduction for 2025? <span class="faq-arrow">+</span></button>
+          <div class="faq-a"><p>The 2025 standard deduction is <strong>$15,000</strong> for single filers, <strong>$30,000</strong> for married filing jointly, and <strong>$22,500</strong> for head of household. Most taxpayers take the standard deduction as it exceeds their itemized deductions.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What is the difference between marginal and effective tax rate? <span class="faq-arrow">+</span></button>
+          <div class="faq-a"><p>Your <strong>marginal rate</strong> is the tax rate on your last dollar of income — your highest bracket. Your <strong>effective rate</strong> is the average rate across all your income. Because the US tax system is progressive, your effective rate is always lower than your marginal rate. For example, a single filer earning $75,000 has a 22% marginal rate but typically pays an effective rate of around 13–15%.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Does this include Social Security and Medicare taxes? <span class="faq-arrow">+</span></button>
+          <div class="faq-a"><p>Yes. This calculator includes FICA taxes: <strong>Social Security at 6.2%</strong> on wages up to $176,100, and <strong>Medicare at 1.45%</strong> on all wages (plus 0.9% additional Medicare tax on wages above $200,000 for single filers).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Does this calculator include state income tax? <span class="faq-arrow">+</span></button>
+          <div class="faq-a"><p>No — this calculator covers <strong>federal income tax only</strong>. State income tax varies significantly by state. Nine states have no income tax at all: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, and Wyoming.</p></div>
+        </div>
+      </section>
+
+      <!-- BOTTOM AD -->
+      <div class="ad-slot ad-slot-banner" style="margin-top:24px" aria-label="Advertisement">Ad · 728×90</div>
+
+    </div>
+  </div>
+</main>
+
+<script src="../js/nav.js"></script>
+<script>
+CalcWise.init({
+  active: 'usa',
+  title: 'US Federal Income Tax Calculator 2025 – Free & Accurate | CalcWise',
+  desc: 'Calculate your US federal income tax for 2025. Enter your income and filing status to see your tax bracket, effective rate, and take-home pay.',
+  canonical: 'https://www.calcwise.com/usa/federal-tax.html'
+});
+
+// ── Standard deductions 2025 ──────────────────
+const STD_DEDUCTION = {
+  single:          15000,
+  married_joint:   30000,
+  married_separate:15000,
+  hoh:             22500
+};
+
+// ── Tax brackets 2025 ─────────────────────────
+const BRACKETS = {
+  single: [
+    [11925,  0.10],
+    [48475,  0.12],
+    [103350, 0.22],
+    [197300, 0.24],
+    [250525, 0.32],
+    [626350, 0.35],
+    [Infinity, 0.37]
+  ],
+  married_joint: [
+    [23850,   0.10],
+    [96950,   0.12],
+    [206700,  0.22],
+    [394600,  0.24],
+    [501050,  0.32],
+    [751600,  0.35],
+    [Infinity, 0.37]
+  ],
+  married_separate: [
+    [11925,  0.10],
+    [48475,  0.12],
+    [103350, 0.22],
+    [197300, 0.24],
+    [250525, 0.32],
+    [375800, 0.35],
+    [Infinity, 0.37]
+  ],
+  hoh: [
+    [17000,  0.10],
+    [64850,  0.12],
+    [103350, 0.22],
+    [197300, 0.24],
+    [250500, 0.32],
+    [626350, 0.35],
+    [Infinity, 0.37]
+  ]
+};
+
+function calcFederalTax(taxableIncome, filing) {
+  const brackets = BRACKETS[filing];
+  let tax = 0, prev = 0, marginal = 0.10;
+  for (const [limit, rate] of brackets) {
+    if (taxableIncome <= prev) break;
+    const chunk = Math.min(taxableIncome, limit) - prev;
+    tax += chunk * rate;
+    marginal = rate;
+    prev = limit;
+    if (taxableIncome <= limit) break;
+  }
+  return { tax, marginal };
+}
+
+function toggleItemized() {
+  const val = document.getElementById('usa-deduction').value;
+  document.getElementById('itemized-group').style.display = val === 'itemized' ? 'block' : 'none';
+}
+
+function calcUSATax() {
+  const gross   = parseFloat(document.getElementById('usa-income').value);
+  const filing  = document.getElementById('usa-filing').value;
+  const deductType = document.getElementById('usa-deduction').value;
+  const contrib401k = parseFloat(document.getElementById('usa-401k').value) || 0;
+  if (!gross || gross < 0) { alert('Please enter your annual income.'); return; }
+
+  // Deduction
+  let deduction = STD_DEDUCTION[filing];
+  if (deductType === 'itemized') {
+    const itemized = parseFloat(document.getElementById('usa-itemized').value) || 0;
+    deduction = Math.max(deduction, itemized); // always use whichever is larger
+  }
+
+  // Taxable income
+  const taxable = Math.max(0, gross - deduction - contrib401k);
+
+  // Federal tax
+  const { tax: fedTax, marginal } = calcFederalTax(taxable, filing);
+
+  // Social Security — 6.2% up to $176,100 wage base
+  const SS_WAGE_BASE = 176100;
+  const ss = Math.min(gross, SS_WAGE_BASE) * 0.062;
+
+  // Medicare — 1.45% all + 0.9% above threshold
+  const MEDICARE_THRESHOLD = filing === 'married_joint' ? 250000 : 200000;
+  let medicare = gross * 0.0145;
+  if (gross > MEDICARE_THRESHOLD) medicare += (gross - MEDICARE_THRESHOLD) * 0.009;
+
+  const totalTax = fedTax + ss + medicare + contrib401k;
+  const takeHome = gross - totalTax;
+  const effectiveRate = (fedTax / gross) * 100;
+
+  function usd(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function pct(v) { return v.toFixed(1) + '%'; }
+
+  document.getElementById('usa-takehome').textContent   = usd(takeHome);
+  document.getElementById('usa-monthly').textContent    = usd(takeHome / 12) + ' per month';
+  document.getElementById('usa-gross-show').textContent = usd(gross);
+  document.getElementById('usa-deduct-show').textContent= usd(deduction) + (deductType === 'standard' ? ' (standard)' : ' (itemized)');
+  document.getElementById('usa-401k-show').textContent  = usd(contrib401k);
+  document.getElementById('usa-taxable').textContent    = usd(taxable);
+  document.getElementById('usa-fed-tax').textContent    = usd(fedTax);
+  document.getElementById('usa-ss').textContent         = usd(ss);
+  document.getElementById('usa-medicare').textContent   = usd(medicare);
+  document.getElementById('usa-marginal').textContent   = pct(marginal * 100);
+  document.getElementById('usa-effective').textContent  = pct(effectiveRate);
+
+  document.getElementById('usa-result').classList.add('show');
+  document.getElementById('usa-mid-ad').style.display = 'flex';
+  document.getElementById('usa-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ── Bracket tab toggle ────────────────────────
+function showBracketTab(tab) {
+  ['single','married','hoh'].forEach(t => {
+    document.getElementById('brackets-' + t).style.display = t === tab ? 'block' : 'none';
+    const btn = document.getElementById('tab-' + t);
+    btn.style.background = t === tab ? 'var(--color-usa)' : 'var(--bg)';
+    btn.style.color      = t === tab ? '#fff' : 'var(--muted)';
+  });
+}
+</script>
+</body>
+</html>

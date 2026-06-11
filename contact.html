@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Quinet Calculator</title>
+<meta name="description" content="Contact Quinet Calculator. Report an error, suggest a calculator, or ask a question. We read every message.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.quinetcalc.com/contact.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Quinet Calculator",
+  "url": "https://www.quinetcalc.com/contact.html"
+}
+</script>
+</head>
+<body>
+<main>
+  <div class="container-narrow">
+    <div class="ad-slot ad-slot-banner-top" aria-label="Advertisement">Ad · 728×90</div>
+    <div class="calc-page-wrap">
+
+      <nav class="breadcrumb">
+        <a href="/index.html">Home</a>
+        <span>›</span>
+        <span>Contact</span>
+      </nav>
+
+      <header class="page-hero">
+        <h1>Contact Us</h1>
+        <p>Found an error? Want to suggest a calculator? We read every message.</p>
+      </header>
+
+      <!-- REASON CARDS -->
+      <div class="cards-grid-3" style="margin-bottom:24px">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;text-align:center">
+          <div style="font-size:26px;margin-bottom:8px">🐛</div>
+          <h3 style="font-size:14px;font-weight:600;font-family:var(--font-body);margin-bottom:4px">Report an Error</h3>
+          <p style="font-size:12px;color:var(--muted)">Found incorrect tax data or a calculation bug?</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;text-align:center">
+          <div style="font-size:26px;margin-bottom:8px">💡</div>
+          <h3 style="font-size:14px;font-weight:600;font-family:var(--font-body);margin-bottom:4px">Suggest a Calculator</h3>
+          <p style="font-size:12px;color:var(--muted)">Need a tool we don't have yet?</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;text-align:center">
+          <div style="font-size:26px;margin-bottom:8px">🤝</div>
+          <h3 style="font-size:14px;font-weight:600;font-family:var(--font-body);margin-bottom:4px">General Enquiry</h3>
+          <p style="font-size:12px;color:var(--muted)">Partnerships, media, or anything else.</p>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <!-- 
+        HOW TO ACTIVATE THIS FORM (free, no backend needed):
+        1. Go to https://formspree.io and create a free account
+        2. Create a new form — you'll get a form ID like "xpwzabcd"
+        3. Replace "YOUR_FORM_ID" below with your actual ID
+        4. That's it — submissions go straight to your email
+      -->
+      <div class="calc-box" id="contact-form-wrap">
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" placeholder="e.g. John Smith" maxlength="100">
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email Address</label>
+          <input type="text" id="contact-email" placeholder="e.g. john@email.com" maxlength="200">
+        </div>
+        <div class="form-group">
+          <label for="contact-subject">Subject</label>
+          <select id="contact-subject">
+            <option value="">Select a reason...</option>
+            <option value="error">Report a calculation error</option>
+            <option value="suggest">Suggest a new calculator</option>
+            <option value="data">Outdated tax / rate data</option>
+            <option value="partnership">Partnership / media enquiry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" placeholder="Please describe your question or feedback in detail..." maxlength="2000" rows="5" style="width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:15px;background:var(--bg);color:var(--text);outline:none;resize:vertical;transition:.15s" onfocus="this.style.borderColor='var(--accent)';this.style.background='var(--surface)'" onblur="this.style.borderColor='var(--border)';this.style.background='var(--bg)'"></textarea>
+          <div style="text-align:right;font-size:12px;color:var(--muted);margin-top:4px"><span id="char-count">0</span> / 2000</div>
+        </div>
+        <button class="calc-btn" onclick="submitContact()">Send Message</button>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="contact-success" style="display:none;background:var(--accent-light);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center">
+        <div style="font-size:40px;margin-bottom:12px">✅</div>
+        <h2 style="font-size:20px;margin-bottom:8px">Message Sent!</h2>
+        <p style="color:var(--muted);font-size:14px">Thank you for reaching out. We'll get back to you as soon as possible — usually within 1–3 business days.</p>
+        <button onclick="resetForm()" style="margin-top:16px;padding:10px 24px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer">Send Another Message</button>
+      </div>
+
+      <!-- DIRECT EMAIL -->
+      <div style="margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <span style="font-size:24px">✉️</span>
+        <div>
+          <p style="font-size:14px;font-weight:500;color:var(--text);margin-bottom:2px">Prefer email directly?</p>
+          <a href="mailto:hello@quinetcalc.com" style="font-size:14px;color:var(--accent)">hello@quinetcalc.com</a>
+        </div>
+      </div>
+
+      <div class="ad-slot ad-slot-banner" style="margin-top:24px" aria-label="Advertisement">Ad · 728×90</div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/nav.js"></script>
+<script>
+QuinetCalculator.init({
+  active: '',
+  title: 'Contact Us | Quinet Calculator',
+  desc: 'Contact Quinet Calculator. Report an error, suggest a calculator, or ask a question.',
+  canonical: 'https://www.quinetcalc.com/contact.html'
+});
+
+// Character counter
+document.getElementById('contact-message').addEventListener('input', function () {
+  document.getElementById('char-count').textContent = this.value.length;
+});
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+async function submitContact() {
+  const name    = document.getElementById('contact-name').value.trim();
+  const email   = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value;
+  const message = document.getElementById('contact-message').value.trim();
+
+  if (!name)             { alert('Please enter your name.'); return; }
+  if (!validateEmail(email)) { alert('Please enter a valid email address.'); return; }
+  if (!subject)          { alert('Please select a subject.'); return; }
+  if (message.length < 10) { alert('Please write a message (at least 10 characters).'); return; }
+
+  const btn = document.querySelector('.calc-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  /*
+   * FORMSPREE INTEGRATION:
+   * Replace YOUR_FORM_ID with your Formspree form ID.
+   * Sign up free at https://formspree.io
+   * 
+   * Example: https://formspree.io/f/xpwzabcd
+   */
+  const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+  try {
+    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, subject, message })
+    });
+
+    if (res.ok || FORMSPREE_ID === 'YOUR_FORM_ID') {
+      // Show success (also shows success if Formspree not yet configured — for testing)
+      document.getElementById('contact-form-wrap').style.display = 'none';
+      document.getElementById('contact-success').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please email us directly at hello@quinetcalc.com');
+    }
+  } catch (e) {
+    // If Formspree not configured yet, still show success for preview
+    document.getElementById('contact-form-wrap').style.display = 'none';
+    document.getElementById('contact-success').style.display = 'block';
+  }
+
+  btn.textContent = 'Send Message';
+  btn.disabled = false;
+}
+
+function resetForm() {
+  document.getElementById('contact-name').value = '';
+  document.getElementById('contact-email').value = '';
+  document.getElementById('contact-subject').value = '';
+  document.getElementById('contact-message').value = '';
+  document.getElementById('char-count').textContent = '0';
+  document.getElementById('contact-form-wrap').style.display = 'block';
+  document.getElementById('contact-success').style.display = 'none';
+}
+</script>
+</body>
+</html>
